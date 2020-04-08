@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
@@ -15,6 +17,8 @@ public class MainActivity extends AppCompatActivity {
 
     private Button mSearch;
     private Button mAbout;
+    private EditText mFrom;
+    private EditText mTo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,12 +27,30 @@ public class MainActivity extends AppCompatActivity {
         mSearch = findViewById(R.id.search);
         mAbout = findViewById(R.id.aboutButton);
 
+        mFrom = findViewById(R.id.from);
+        mTo = findViewById(R.id.to);
+
+
         mSearch.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),ResultListActivity.class));
-                finish();
+
+                if ( mFrom.getText().toString().isEmpty() ) {
+                    Toast.makeText(MainActivity.this, "Select source", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if ( mTo.getText().toString().isEmpty() ) {
+                    Toast.makeText(MainActivity.this, "Select Destination", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+
+                Intent i = new Intent(getApplicationContext(),ResultListActivity.class);
+                i.putExtra("from", mFrom.getText().toString());
+                i.putExtra("to", mTo.getText().toString());
+                startActivity(i);
+                // finish(); We shouldn't close this here
             }
         });
 
