@@ -17,20 +17,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.UserListViewHolder
 
     private List<SearchResult> userList;
 
-    public MyAdapter() {
-        this.userList = new ArrayList<>();
-        userList.add(new SearchResult("Pala - Banglore ( via Nilambur - Mysore )", "SuperDeluxe AirBus","3","5"));
-        userList.add(new SearchResult("Kozhikode", "2","3","5"));
-        userList.add(new SearchResult("1", "2","3","5"));
-        userList.add(new SearchResult("3", "2","3","5"));
-        userList.add(new SearchResult("666", "2","3","5"));
-        userList.add(new SearchResult("666", "2","3","5"));
-        userList.add(new SearchResult("666", "2","3","5"));
-        userList.add(new SearchResult("666", "2","3","5"));
-        userList.add(new SearchResult("666", "2","3","5"));
-        userList.add(new SearchResult("asdfa", "2","3","5"));
-        userList.add(new SearchResult("444", "2","3","5"));
-        userList.add(new SearchResult("e", "2","3","5"));
+    public MyAdapter(List<SearchResult> userList) {
+        this.userList = userList;
     }
 
     @NonNull
