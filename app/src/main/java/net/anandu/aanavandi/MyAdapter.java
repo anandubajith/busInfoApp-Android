@@ -4,7 +4,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,15 +12,14 @@ import com.google.android.material.snackbar.Snackbar;
 
 import net.anandu.aanavandi.model.SearchResult;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.UserListViewHolder>{
 
-    private List<SearchResult> userList;
+    private List<SearchResult> results;
 
-    public MyAdapter(List<SearchResult> userList) {
-        this.userList = userList;
+    public MyAdapter(List<SearchResult> results) {
+        this.results = results;
     }
 
     @NonNull
@@ -36,8 +34,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.UserListViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull UserListViewHolder holder, final int position) {
-        holder.mName.setText(userList.get(position).getBusName());
-        holder.mType.setText(userList.get(position).getBusType());
+        holder.mName.setText(results.get(position).getBusName());
+        holder.mType.setText(results.get(position).getBusType());
         holder.itemView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -49,7 +47,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.UserListViewHolder
 
     @Override
     public int getItemCount() {
-        return userList.size();
+        return results.size();
     }
 
     public class UserListViewHolder extends RecyclerView.ViewHolder {
